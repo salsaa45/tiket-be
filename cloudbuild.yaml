@@ -22,4 +22,4 @@ steps:
       - '--region=asia-southeast2'
       - '--allow-unauthenticated'
       - '--port=8080'
-      - '--set-env-vars=DB_HOST=localhost,DB_USER=root,DB_PASSWORD=,DB_NAME=tiket,PORT=8080'
+      - '--set-env-vars=DB_HOST=/cloudsql/PROJECT_ID:asia-southeast2:tiket-be,DB_USER=root,DB_PASSWORD=,DB_NAME=tiket,PORT=8080'
