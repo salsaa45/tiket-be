@@ -1,0 +1,25 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/backend-repo/backend-image'
+      - '.'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/backend-repo/backend-image'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'backend-service'
+      - '--image=asia-southeast2-docker.pkg.dev/$PROJECT_ID/backend-repo/backend-image'
+      - '--platform=managed'
+      - '--region=asia-southeast2'
+      - '--allow-unauthenticated'
+      - '--port=8080'
+      - '--set-env-vars=DB_HOST=localhost,DB_USER=root,DB_PASSWORD='',DB_NAME=tiket,PORT=8080'
