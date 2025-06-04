@@ -22,5 +22,5 @@ steps:
     - '--region=asia-southeast2'
     - '--allow-unauthenticated'
     - '--port=8080'
-    - '--add-cloudsql-instances=PROJECT_ID:asia-southeast2:tiket-be'
-    - '--set-env-vars=DB_HOST=/cloudsql/PROJECT_ID:asia-southeast2:tiket-be,DB_USER=root,DB_PASSWORD=tiket,DB_NAME=tiket,PORT=8080'
+    - '--add-cloudsql-instances=f-14-450706:asia-southeast2:tiket-be'
+    - '--set-env-vars=DB_HOST=/cloudsql/f-14-450706:asia-southeast2:tiket-be,DB_USER=root,DB_PASSWORD=tiket,DB_NAME=tiket,PORT=8080'
