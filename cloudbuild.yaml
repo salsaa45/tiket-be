@@ -3,24 +3,24 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/backend-repo/backend-image'
+      - 'asia-southeast2-docker.pkg.dev/f-14-450706/backend-repo/backend-image'
       - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/backend-repo/backend-image'
+      - 'asia-southeast2-docker.pkg.dev/f-14-450706/backend-repo/backend-image'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'gcloud'
-  args:
-    - 'run'
-    - 'deploy'
-    - 'backend-service'
-    - '--image=asia-southeast2-docker.pkg.dev/$PROJECT_ID/backend-repo/backend-image'
-    - '--platform=managed'
-    - '--region=asia-southeast2'
-    - '--allow-unauthenticated'
-    - '--port=8080'
-    - '--add-cloudsql-instances=f-14-450706:asia-southeast2:tiket-be'
-    - '--set-env-vars=DB_HOST=/cloudsql/f-14-450706:asia-southeast2:tiket-be,DB_USER=root,DB_PASSWORD=tiket,DB_NAME=tiket,PORT=8080'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'backend-service'
+      - '--image=asia-southeast2-docker.pkg.dev/f-14-450706/backend-repo/backend-image'
+      - '--platform=managed'
+      - '--region=asia-southeast2'
+      - '--allow-unauthenticated'
+      - '--port=8080'
+      - '--add-cloudsql-instances=f-14-450706:asia-southeast2:tiket-be'
+      - '--set-env-vars=DB_HOST=/cloudsql/f-14-450706:asia-southeast2:tiket-be,DB_USER=root,DB_PASSWORD=tiket,DB_NAME=tiket,PORT=8080'
